@@ -55,8 +55,16 @@ $env:JAVA_HOME = "C:\Program Files\Android\Android Studio\jbr"
 $env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
 ```
 
-El APK de depuración se genera con `flutter build apk --debug` en
-`build\app\outputs\flutter-apk\app-debug.apk`.
+Para generar un APK de depuración compatible con teléfonos ARM y emuladores
+x86_64, especifica las plataformas al compilar:
+
+```powershell
+flutter build apk --debug --target-platform android-arm,android-arm64,android-x64
+```
+
+El APK se guarda en `build\app\outputs\flutter-apk\app-debug.apk`. Vuelve a
+generarlo antes de compartirlo: `flutter run` puede sobrescribirlo con una
+compilación específica del dispositivo utilizado.
 
 El ícono fuente está en `assets\icon\app_icon.png`. Para regenerar los íconos
 de Android y iOS después de modificarlo, ejecuta `dart run flutter_launcher_icons`.
